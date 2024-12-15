@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full-Screen Animated Presentation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Keyframes for slide transitions */
+    @keyframes slide-in {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slide-out {
+      from {
+        transform: translateX(0);
+        opacity: 1;
+      }
+      to {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+    }
+
+    .slide-in {
+      animation: slide-in 0.5s ease-in-out forwards;
+    }
+
+    .slide-out {
+      animation: slide-out 0.5s ease-in-out forwards;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-white h-screen overflow-hidden">
+  <!-- Slide container -->
+  <div class="relative w-full h-full overflow-hidden">
+    <!-- Slide 1 -->
+     <!--
+    <div id="slide1" class="absolute inset-0 flex flex-col justify-center items-center bg-cover" style="background-image: url('./assets/lemur.jpg');""  style="background-image: url('./assets/lemur.jpg'); opacity: 0.7;">
+      -->
+    <div id="slide1" class="absolute flex flex-col justify-center items-center h-screen w-full bg-center bg-cover" style="background: linear-gradient(rgba(248, 247, 247, 0.5), rgba(0, 0, 0, 0.7)), url('./assets/lemur.jpg') center/cover no-repeat;">
+          <!-- Overlay -->
+      
+      <h1 class="text-5xl text-white-500 text-center font-bold">Madagascar Biodiversity is well known</h1>
+      <p class="text-xl text-center mt-4">90% of its plant species being endemic | 95% of Madagascar’s reptiles, 92% of its mammals, and 89% of its amphibians are endemic.</p>
+      <button onclick="nextSlide(1)" class="mt-8 px-6 py-3 bg-white text-blue-500 rounded-lg font-semibold shadow-lg hover:bg-blue-200">
+        Next
+      </button>
+    </div>
+    <!-- Slide 2 -->
+    <div id="slide2" class="absolute inset-0 hidden flex flex-col justify-center items-center bg-cover" style="background: linear-gradient(rgba(248, 247, 247, 0.5), rgba(245, 168, 168, 0.7)), url('./assets/slash.jpg') center/cover no-repeat;">
+      <h1 class="text-5xl text-center font-bold">Madagascar's Richness is threatned!</h1>
+      <p class="text-xl text-center mt-4">The island has lost 40% of its forests in 40 years...</p>
+      <div class="flex mt-8 space-x-4">
+        <button onclick="previousSlide(2)" class="px-6 py-3 bg-white text-red-500 rounded-lg font-semibold shadow-lg hover:bg-red-200">
+          Back
+        </button>
+        <button onclick="nextSlide(2)" class="px-6 py-3 bg-white text-red-500 rounded-lg font-semibold shadow-lg hover:bg-red-200">
+          Next
+        </button>
+      </div>
+    </div>
+    <!-- Slide 3 -->
+    <div id="slide3" class="absolute inset-0 hidden flex flex-col justify-center items-center bg-purple-500" style="background: linear-gradient(rgba(248, 247, 247, 0.5), rgba(0, 0, 0, 0.7)), url('./assets/spices.jpg') center/cover no-repeat;">
+      <h1 class="text-5xl text-center font-bold">Spices from Local communities.</h1>
+      <p class="text-xl text-center mt-4">We are dedicated to sourcing premium spices, including the unique and endemic Tsiperifery, directly from local communities in Madagascar. By partnering with those living near the island's pristine natural forests, we aim to uplift their livelihoods while promoting the sustainable use of biodiversity. Together, we strive to harmonize economic empowerment with environmental stewardship, ensuring the richness of Madagascar's ecosystems becomes an integral part of the community's well-being.</p>
+      <button onclick="previousSlide(3)" class="mt-8 px-6 py-3 bg-white text-purple-500 rounded-lg font-semibold shadow-lg hover:bg-purple-200">
+        Back
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function nextSlide(slide) {
+      const current = document.getElementById(`slide${slide}`);
+      const next = document.getElementById(`slide${slide + 1}`);
+      if (next) {
+        current.classList.add('slide-out');
+        current.addEventListener('animationend', () => {
+          current.classList.add('hidden');
+          current.classList.remove('slide-out');
+          next.classList.remove('hidden');
+          next.classList.add('slide-in');
+        }, { once: true });
+      }
+    }
+
+    function previousSlide(slide) {
+      const current = document.getElementById(`slide${slide}`);
+      const prev = document.getElementById(`slide${slide - 1}`);
+      if (prev) {
+        current.classList.add('slide-out');
+        current.addEventListener('animationend', () => {
+          current.classList.add('hidden');
+          current.classList.remove('slide-out');
+          prev.classList.remove('hidden');
+          prev.classList.add('slide-in');
+        }, { once: true });
+      }
+    }
+  </script>
+</body>
+</html>

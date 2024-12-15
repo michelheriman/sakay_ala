@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Sticky Navbar with Toggle</title>
+</head>
+<body class="bg-gray-100">
+  <!-- Sticky Navbar -->
+  <header class="sticky top-0 bg-white shadow-md z-50">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <!-- Logo -->
+        <a href="#" class="text-2xl font-bold text-blue-600">MyLogo</a>
+
+        <!-- Desktop Navigation Links -->
+        <div class="hidden md:flex space-x-8">
+          <a href="#" class="text-gray-600 hover:text-blue-600">Home</a>
+          <a href="#" class="text-gray-600 hover:text-blue-600">About</a>
+          <a href="#" class="text-gray-600 hover:text-blue-600">Services</a>
+          <a href="#" class="text-gray-600 hover:text-blue-600">Contact</a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="menu-toggle" class="md:hidden flex items-center text-gray-600 focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Navigation Links -->
+      <div id="mobile-menu" class="hidden md:hidden flex flex-col mt-2 space-y-2 bg-gray-100 rounded-lg p-4">
+        <a href="#" class="text-gray-600 hover:text-blue-600">Home</a>
+        <a href="#" class="text-gray-600 hover:text-blue-600">About</a>
+        <a href="#" class="text-gray-600 hover:text-blue-600">Services</a>
+        <a href="#" class="text-gray-600 hover:text-blue-600">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Page Content -->
+  <main class="mt-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section class="my-8">
+        <h1 class="text-4xl font-bold text-gray-800">Welcome!</h1>
+        <p class="mt-4 text-gray-600">
+          This is an example of a sticky navbar with a responsive mobile menu. Scroll down to see the navbar remain at the top.
+        </p>
+      </section>
+      <div class="h-96 bg-gray-300 my-6 flex items-center justify-center">Content Section 1</div>
+      <div class="h-96 bg-gray-400 my-6 flex items-center justify-center">Content Section 2</div>
+      <div class="h-96 bg-gray-500 my-6 flex items-center justify-center">Content Section 3</div>
+    </div>
+  </main>
+
+  <script>
+    // Toggle mobile menu visibility
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
